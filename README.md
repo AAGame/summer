@@ -1,2 +1,2 @@
 # summer
-Game for alan and alex.
+Game for Alan and Alex.
