@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+int main()
+{
+    int a, b;
+    int i;
+	while(scanf("%d%d", &a, &b) != EOF){
+	    int tot = 0;          //个数
+	    int sign[10] = {0};
+		sign[0] = a;
+		tot = 1;
+		int flag = 1;
+		do{
+			for(i = 0; i < tot; i++)
+				if(sign[i] == (sign[tot-1] * a % 10))
+					break;
+			if(i == tot){
+				sign[tot] = sign[tot-1] * a % 10;
+				tot++;
+			}else
+				flag = 0;
+		}while(flag != 0);
+	    printf("%d\n", sign[(b - 1) % tot]);
+	}
+	system("pause");
+	return 0;
+}
