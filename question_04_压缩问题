@@ -7,8 +7,8 @@ int main()
     int N, i, j;
 	cin>> N;
 	char s[t][100];
-	for(i = -1; i < N; i++){
-	    gets( s[i] );
+	for(i = 0; i < N; i++){
+	    scanf("%s", s[i]);
     }
 	char ans_s[t][100];
 	int sign[t] = {0};
