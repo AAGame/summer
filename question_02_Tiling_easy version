@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int T, i, j;
+	int N[20];
+	int ans[31] = {0};
+	cin>> T;
+	for(i = 0; i < T; i++)
+		cin>> N[i];
+    ans[1] = 1;
+	ans[2] = 3;
+	for(i = 3; i <= 30; i++)
+		ans[i] = ans[i-1] + 2 * ans[i-2];
+	for(i = 0; i < T; i++){
+		cout<<ans[ N[i] ]<<endl;
+	}
+	system("pause");
+	return 0;
+}
