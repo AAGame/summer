@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+int n_fac(int n)
+{
+	if(n == 1 || n == 0)
+		return 1;
+	else
+		return n * n_fac(n-1);
+}
+int c_(int n, int m)
+{
+	return n_fac(n) / (n_fac(m) * n_fac(n-m));
+}
+int main()
+{
+    int T;
+	int n[20];
+	int ans[20]  = {0};
+	int i, j;
+	cin>>T;
+	for(i = 0; i < T; i++){
+		cin>> n[i];
+	}
+	for(i = 0; i < T; i++){
+		if(n[i] == 1)
+			ans[i] = 1;
+		else{
+			for(j = 0; j < n[i]; j++){
+				ans[i] += (j + 1) * c_(n[i] - 1, j);
+			}
+		}
+	}
+	for(i = 0; i < T; i++){
+	    cout<< ans[i]<< endl;
+	}
+	system("pause");
+	return 0;
+}
