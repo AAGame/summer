@@ -1,0 +1,53 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void swap(int *a, int *b)
+{
+	*a = *a + *b;
+	*b = *a - *b;
+	*a = *a - *b;
+}
+void sort_up(int a[],int b[], int n)
+{
+	int i, j;
+	int t;
+	for(i = 0; i < n; i++){
+		for(j = i; j < n; j++){
+			if(a[i] > a[j]){
+				swap(a + i, a + j);
+				swap(b + i, b + j);
+			}
+		}
+	}
+}
+int main()
+{
+    int C, i, j, k;
+	int n[100], m[100];
+	double ans[100] = {0.0};
+	int pri[100][1000], wei[100][1000];
+	cin>> C;
+	for(i = 0; i < C; i++){
+		cin>> n[i]>> m[i];
+		for(j = 0; j < m[i]; j++){
+			cin>> pri[i][j]>> wei[i][j];
+		}
+		sort_up(pri[i], wei[i], m[i]);
+		int sign = 0;
+		int sum = 0;
+		do{
+			sum += pri[i][sign] * wei[i][sign];
+			sign++;
+		}while(sum < n[i]);
+		int mon = n[i];
+		for(j = 0; j < sign - 1; j++){
+			ans[i] += wei[i][j];
+			mon = mon - pri[i][j] * wei[i][j];
+		}
+		ans[i] += (double)mon/(double)pri[i][sign-1];
+	}
+	for(i = 0; i < C; i++)
+		printf("%.2f\n",ans[i]);
+	system("pause");
+	return 0;
+}
